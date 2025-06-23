@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,6 +59,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <section class="thankyou container">
@@ -99,18 +101,28 @@
 
     const productMap = {
       "6 Bottles": {
-        image: "./src/assets/img/img-6-bottles.webp",
-        bonus: "🎁 <strong>Bônus 1:</strong> Ebook exclusivo com plano de 180 dias para melhores resultados!"
+        image: "/images/img-6-bottles.webp",
+        bonus: {
+          text: "🎁 <strong>Bônus 1:</strong> Ebook exclusivo com plano de 180 dias para melhores resultados!",
+          image: "/images/bonus1.webp"
+        }
       },
       "3 Bottles": {
-        image: "./src/assets/img/img-3-bottles.webp",
-        bonus: "🎁 <strong>Bônus 2:</strong> Acesso a vídeo-aulas sobre nutrição natural!"
+        image: "/images/img-3-bottles.webp",
+        bonus: {
+          text: "🎁 <strong>Bônus 2:</strong> Acesso a vídeo-aulas sobre nutrição natural!",
+          image: "/images/bonus2.webp"
+        }
       },
       "2 Bottles": {
-        image: "./src/assets/img/img-2-bottles.webp",
-        bonus: "🎁 <strong>Bônus 3:</strong> Guia PDF de receitas naturais para acelerar os resultados!"
+        image: "/images/img-2-bottles.webp",
+        bonus: {
+          text: "🎁 <strong>Bônus 3:</strong> Guia PDF de receitas naturais para acelerar os resultados!",
+          image: "/images/bonus3.webp"
+        }
       }
     };
+
 
     if (productMap[product]) {
       productImageEl.src = productMap[product].image;
@@ -118,8 +130,13 @@
       bonusContentEl.innerHTML = productMap[product].bonus;
     } else {
       productImageEl.style.display = "none";
-      bonusContentEl.innerHTML = "Bônus indisponível para esta oferta.";
+      bonusContentEl.innerHTML = `
+  <p>${productMap[product].bonus.text}</p>
+  <img src="${productMap[product].bonus.image}" alt="Imagem do bônus" class="img-fluid mt-3" style="max-width: 100%; height: auto;" />
+`;
+
     }
   </script>
 </body>
+
 </html>
