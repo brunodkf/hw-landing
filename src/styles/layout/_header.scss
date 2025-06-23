@@ -1,0 +1,19 @@
+.header {
+    &__decoration {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1em;
+        // height: auto;
+        padding: .2em;
+        color: #ededed;
+        background-color: #7d9571;
+    }
+
+    &__image {
+        width: 120px;
+        font-size: 1em;
+        margin: 30px;
+        margin-bottom: 20px;
+    }
+}

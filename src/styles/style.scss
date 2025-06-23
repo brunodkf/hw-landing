@@ -1,0 +1,18 @@
+$primary: #7d9571;
+$black: #2d2d2d;
+$white: #ededed;
+$danger: #8474a1;
+
+@import './base/base';
+@import './base/typography';
+
+@import './layout/header';
+@import './layout/references';
+@import './layout/layout';
+@import './layout/counter';
+@import './layout/offers';
+@import './layout/guarantee';
+@import './layout/faq';
+@import './layout/footer';
+
+@import "bootstrap/scss/bootstrap";

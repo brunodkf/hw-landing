@@ -1,0 +1,40 @@
+.guarantee {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 3rem 1rem;
+
+
+  &__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+
+  &__text {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #212529;
+    line-height: 1.6;
+  }
+
+  &__seals {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    img {
+      height: 60px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+}

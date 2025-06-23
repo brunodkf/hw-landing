@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You - Natty Lean</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    :root {
+      --primary: #7d9571;
+      --black: #2d2d2d;
+      --white: #ededed;
+      --danger: #8474a1;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    .thankyou {
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .thankyou__title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .thankyou__product-img {
+      max-width: 200px;
+      margin: 2rem auto;
+    }
+
+    .thankyou__bonus {
+      background-color: var(--danger);
+      color: #fff;
+      padding: 1rem;
+      margin: 2rem auto;
+      border-radius: 0.5rem;
+      max-width: 500px;
+    }
+
+    .thankyou__user {
+      margin-top: 2rem;
+      font-size: 1rem;
+    }
+
+    footer.footer {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 1rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="thankyou container">
+    <h1 class="thankyou__title">Obrigado pela sua compra, <span id="clientName"></span>!</h1>
+    <p>Você escolheu: <strong id="chosenProduct"></strong></p>
+    <img id="productImage" class="thankyou__product-img img-fluid" alt="Produto escolhido" />
+
+    <div class="thankyou__bonus" id="bonusContent">
+    </div>
+
+    <div class="thankyou__user">
+      <p><strong>Email:</strong> <span id="clientEmail"></span></p>
+      <p><strong>Telefone:</strong> <span id="clientPhone"></span></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Natty Lean Research. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const email = params.get("email");
+    const phone = params.get("phone");
+    const product = params.get("product");
+
+    const clientNameEl = document.getElementById("clientName");
+    const clientEmailEl = document.getElementById("clientEmail");
+    const clientPhoneEl = document.getElementById("clientPhone");
+    const productEl = document.getElementById("chosenProduct");
+    const productImageEl = document.getElementById("productImage");
+    const bonusContentEl = document.getElementById("bonusContent");
+
+    clientNameEl.textContent = name || "Cliente";
+    clientEmailEl.textContent = email || "-";
+    clientPhoneEl.textContent = phone || "-";
+    productEl.textContent = product || "Produto não identificado";
+
+    const productMap = {
+      "6 Bottles": {
+        image: "./src/assets/img/img-6-bottles.webp",
+        bonus: "🎁 <strong>Bônus 1:</strong> Ebook exclusivo com plano de 180 dias para melhores resultados!"
+      },
+      "3 Bottles": {
+        image: "./src/assets/img/img-3-bottles.webp",
+        bonus: "🎁 <strong>Bônus 2:</strong> Acesso a vídeo-aulas sobre nutrição natural!"
+      },
+      "2 Bottles": {
+        image: "./src/assets/img/img-2-bottles.webp",
+        bonus: "🎁 <strong>Bônus 3:</strong> Guia PDF de receitas naturais para acelerar os resultados!"
+      }
+    };
+
+    if (productMap[product]) {
+      productImageEl.src = productMap[product].image;
+      productImageEl.alt = product;
+      bonusContentEl.innerHTML = productMap[product].bonus;
+    } else {
+      productImageEl.style.display = "none";
+      bonusContentEl.innerHTML = "Bônus indisponível para esta oferta.";
+    }
+  </script>
+</body>
+</html>
